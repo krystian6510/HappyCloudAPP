@@ -5,16 +5,36 @@ require_once __DIR__ . '/includes/api.php';
 
 $weather = null;
 $error = null;
+$city = null;
 
+if (isset($_POST['clear_history'])) {
+    unset($_SESSION['history']);
+    $_SESSION['history'] = [];
+}
 
 if (isset($_POST['city'])) {
     $city = trim($_POST['city']);
-    $result = getWeather($city);
 
-    if (isset($result['error'])) {
-        $error = $result['error'];
-    } else {
-        $weather = $result;
+    if (!empty($city)) {
+        $result = getWeather($city);
+
+        if (isset($result['error'])) {
+            $error = $result['error'];
+        } else {
+            $weather = $result;
+
+            $city = ucfirst(strtolower($city));
+
+            if (!isset($_SESSION['history'])) {
+                $_SESSION['history'] = [];
+            }
+
+            $_SESSION['history'] = array_diff($_SESSION['history'], [$city]);
+
+            array_unshift($_SESSION['history'], $city);
+
+            $_SESSION['history'] = array_slice($_SESSION['history'], 0, 5);
+        }
     }
 }
 
@@ -27,23 +47,7 @@ function formatDescription($desc) {
 }
 
 function getWeatherIconUrl($iconCode) {
-    return "http://openweathermap.org/img/wn/" . $iconCode . "@2x.png";
-}
-
-if (!isset($_SESSION['history'])) {
-    $_SESSION['history'] = array();
-}
-
-$city = ucfirst(strtolower($city));
-
-$_SESSION['history'] = array_diff($_SESSION['history'], array($city));
-
-array_unshift($_SESSION['history'], $city);
-
-$_SESSION['history'] = array_slice($_SESSION['history'], 0, 5);
-
-if (isset($_POST['clear_history'])) {
-    unset($_SESSION['history']);
+    return "https://openweathermap.org/img/wn/" . $iconCode . "@2x.png";
 }
 ?>
 
