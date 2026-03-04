@@ -82,11 +82,18 @@ UNITS=metric
 
 Save the file.
 
+And create config.php in /includes then add there this code:
+<?php
+define('API_KEY', 'YOUR API_KEY');
+define('API_BASE_URL', 'https://api.openweathermap.org/data/2.5/');
+define('UNITS', 'metric');
+define('CACHE_TTL', 300);
+
 Make sure `.env` is listed in `.gitignore`.
 
 ---
 
-#Open the Application
+# Open the Application
 
 Open your browser and go to:
 
