@@ -1,2 +1,3 @@
 # HappyCloudAPP
-Web APP that allows to check the weather
+HappyCloudAPP is a modern weather web application built with PHP, HTML and CSS.
+It provides real-time weather data using a public weather API.
