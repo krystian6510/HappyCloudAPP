@@ -1,228 +1,215 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+body {
+    background: #f5fbff;
+}
+
 .con {
     display: grid;
     grid-template-areas: 
         "header header"
         "aside main"
         "footer footer";
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: auto 1fr auto;
-    gap: 20px;
-    min-height: 100vh;
+    grid-template-columns: 320px 1fr;
+    grid-template-rows: 70px 1fr 60px;
+    height: 100vh;
+    gap: 15px;
+    padding: 15px;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
-body{
-    width: 100%;
-    height: 100%;
-}
+
 header { 
     grid-area: header;
-    background-color: #87ceeb;
-    text-align: center; 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px;
+    padding: 0 20px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #4da6ff, #1e90ff);
+    color: white;
+    min-height: 0;
 }
 
 aside { 
     grid-area: aside;
-    background-color: #f0f8ff;
-    border-radius: 8px;
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    overflow-y: auto;
+    min-height: 0;
+    overflow-x: hidden;
 }
 
 main { 
     grid-area: main;
-    background-color: #e6f7ff;
-    border-radius: 8px;
-    border-radius: 10px;
-    border-color: #000;
-    border-style: solid;
-    text-align: center;
+    background: white;
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    min-height: 0;
+    overflow: auto;
 }
 
 footer { 
     grid-area: footer;
-    background-color: #87ceeb;
-    text-align: center; 
-    border-radius: 8px; 
-    padding: 5px;
-}
-
-header {
+    border-radius: 14px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    background-color: #87ceeb;
-    border-radius: 8px;
+    background: linear-gradient(135deg, #4da6ff, #1e90ff);
+    color: white;
+    font-size: 14px;
+    min-height: 0;
 }
 
 .weather-card {
-    background-color: #e6f7ff;
-    margin: 100px;
-    border-radius: 10px;
-    border-color: #8483c7;
-    border-style: dashed;
+    background: #f5fbff;
+    padding: 30px;
+    border-radius: 18px;
     text-align: center;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    color: #000;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    width: 320px;
+    max-width: 100%;
 }
+
 .weather-card img {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
 }
 
 aside form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
+    gap: 12px;
+    margin-top: 15px;
 }
 
 aside input[type="text"] {
-    padding: 10px;
-    border: 2px solid #87ceeb;
-    border-radius: 8px;
-    font-size: 16px;
+    padding: 12px;
+    border: 2px solid #1e90ff;
+    border-radius: 10px;
+    font-size: 15px;
     outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: 0.3s;
+    width: 100%;
 }
 
 aside input[type="text"]:focus {
-    border-color: #1e90ff;
-    box-shadow: 0 0 5px rgba(30, 144, 255, 0.5);
+    box-shadow: 0 0 8px rgba(30,144,255,0.4);
 }
 
 aside button {
-    padding: 10px;
-    background-color: #1e90ff;
+    padding: 12px;
+    background: linear-gradient(135deg, #4da6ff, #1e90ff);
     color: white;
     border: none;
-    border-radius: 8px;
-    font-size: 16px;
+    border-radius: 10px;
+    font-size: 15px;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    transition: 0.25s;
 }
 
 aside button:hover {
-    background-color: #0077cc;
     transform: translateY(-2px);
-}
-
-aside button:active {
-    transform: translateY(1px);
+    box-shadow: 0 5px 15px rgba(30,144,255,0.4);
 }
 
 #darkModeToggle {
-    padding: 8px 12px;
+    padding: 8px 14px;
+    border-radius: 8px;
     border: none;
-    border-radius: 6px;
-    background-color: #1e90ff;
-    color: white;
-    font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#darkModeToggle:hover {
-    background-color: #0077cc;
-}
-
-body.dark-mode {
-    background-color: #121212;
-    color: #f0f0f0;
-}
-
-body.dark-mode header {
-    background-color: #1e1e1e;
-}
-
-body.dark-mode aside {
-    background-color: #2a2a2a;
-}
-
-body.dark-mode main {
-    background-color: #1f1f1f;
-}
-
-body.dark-mode footer {
-    background-color: #1e1e1e;
-}
-
-body.dark-mode input[type="text"] {
-    background-color: #333;
-    color: #f0f0f0;
-    border: 2px solid #555;
-}
-
-body.dark-mode button {
-    background-color: #555;
-}
-
-body.dark-mode button:hover {
-    background-color: #777;
-}
-.history {
-    margin-top: 25px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 12px;
-    backdrop-filter: blur(6px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    background: white;
+    color: #1e90ff;
+    font-weight: bold;
     transition: 0.3s;
 }
 
-.history h4 {
-    margin-bottom: 10px;
-    font-size: 14px;
-    font-weight: 600;
+.history {
+    margin-top: 25px;
+    padding: 15px;
+    background: #f0f7ff;
+    border-radius: 12px;
 }
 
 .history ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.history li {
-    margin-bottom: 8px;
 }
 
 .history-btn {
     width: 100%;
-    padding: 8px 10px;
-    background: linear-gradient(135deg, #1e90ff, #4da6ff);
+    padding: 8px;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #4da6ff, #1e90ff);
     border: none;
     border-radius: 8px;
     color: white;
-    font-size: 13px;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: 0.25s;
 }
 
 .history-btn:hover {
     transform: translateX(4px);
-    box-shadow: 0 4px 10px rgba(30,144,255,0.3);
 }
 
-.clear-btn:hover {
-    background-color: #f0f0f0;
+.clear-btn {
+    margin-top: 10px;
+}
+
+body.dark-mode {
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+body.dark-mode header,
+body.dark-mode footer {
+    background: #1e293b;
+}
+
+body.dark-mode aside,
+body.dark-mode main {
+    background: #1e293b;
+}
+
+body.dark-mode .weather-card {
+    background: #0f172a;
+    color: #e2e8f0;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
 }
 
 body.dark-mode .history {
-    background: rgba(40, 40, 40, 0.8);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    background: #0f172a;
 }
 
+body.dark-mode input[type="text"] {
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: #e2e8f0;
+}
+
+body.dark-mode input[type="text"]:focus {
+    box-shadow: 0 0 6px rgba(100,149,237,0.5);
+}
+
+body.dark-mode aside button,
 body.dark-mode .history-btn {
-    background: linear-gradient(135deg, #3a8dff, #5da9ff);
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
 }
 
-body.dark-mode .clear-btn {
-    border: 1px solid #555;
-    color: #ccc;
-}
-
-body.dark-mode .clear-btn:hover {
-    background-color: #333;
+body.dark-mode #darkModeToggle {
+    background: #334155;
+    color: white;
 }
